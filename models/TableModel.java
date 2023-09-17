@@ -1,14 +1,16 @@
-package ru.geekbrains.lesson5.models;
+package geek_java_oop_lesson5.models;
 
-import ru.geekbrains.lesson5.presenters.Model;
+import geek_java_oop_lesson5.presenters.Model;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Optional;
 
+// Класс TableModel реализует интерфейс Model и представляет собой модель данных столов
 public class TableModel implements Model {
 
+    // Коллекция столов
     private Collection<Table> tables;
 
     /**
@@ -16,20 +18,17 @@ public class TableModel implements Model {
      * @return коллекция столиков
      */
     public Collection<Table> loadTables(){
-
+        // Если таблицы еще не были инициализированы, инициализировать их
         if (tables == null){
             tables = new ArrayList<>();
-
             tables.add(new Table());
             tables.add(new Table());
             tables.add(new Table());
             tables.add(new Table());
             tables.add(new Table());
         }
-
         return tables;
     }
-
 
     /**
      * Бронирование столика
@@ -47,7 +46,6 @@ public class TableModel implements Model {
             }
         }
         return -1;
-        //throw new RuntimeException("Некорректный номер столика");
     }
 
     /**
@@ -61,6 +59,4 @@ public class TableModel implements Model {
     public int changeReservationTable(int oldReservation, Date reservationDate, int tableNo, String name){
         return  -1;
     }
-
-
 }

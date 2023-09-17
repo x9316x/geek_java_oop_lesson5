@@ -1,9 +1,10 @@
-package ru.geekbrains.lesson5.presenters;
+package geek_java_oop_lesson5.presenters;
 
-import ru.geekbrains.lesson5.models.Table;
+import geek_java_oop_lesson5.models.Table;
 
 import java.util.Collection;
 
+// Интерфейс View, представляющий представление (View) в архитектуре MVP
 public interface View {
 
     /**
@@ -14,13 +15,13 @@ public interface View {
 
     /**
      * Регистрация наблюдателя
-     * @param observer
+     * @param observer наблюдатель
      */
     void setObserver(ViewObserver observer);
 
     /**
      * Распечатать результат бронирования столика
-     * @param reservationNo
+     * @param reservationNo номер бронирования
      */
     void printReservationTableResult(int reservationNo);
 }
