@@ -49,7 +49,6 @@ public class TableModel implements Model {
     }
 
     /**
-     * TODO: Разработать самостоятельно
      * Поменять бронь столика
      * @param oldReservation номер старого резерва (для снятия)
      * @param reservationDate дата резерва столика
@@ -57,6 +56,22 @@ public class TableModel implements Model {
      * @param name Имя
      */
     public int changeReservationTable(int oldReservation, Date reservationDate, int tableNo, String name){
-        return  -1;
+        // Ищем столик с указанным номером
+        Optional<Table> tableOpt = tables.stream().filter(t -> t.getNo() == tableNo).findFirst();
+
+        if (tableOpt.isPresent()) { // Если столик найден
+            Table table = tableOpt.get();
+
+            // Удаляем старое бронирование
+            table.getReservations().removeIf(r -> r.getId() == oldReservation);
+
+            // Создаем новое бронирование и добавляем его к столику
+            Reservation newReservation = new Reservation(reservationDate, name);
+            table.getReservations().add(newReservation);
+
+            return newReservation.getId(); // Возвращаем идентификатор нового бронирования
+        }
+        return -1; // Возвращаем -1 в случае ошибки
     }
+
 }

@@ -43,4 +43,12 @@ public class BookingPresenter implements ViewObserver {
         int reservationNo = tableModel.reservationTable(orderDate, tableNo, name);
         updateReservationResultUI(reservationNo);
     }
+
+    @Override
+    // Метод для обработки изменения бронирования столика
+    public int onChangeReservationTable(int oldReservation, Date reservationDate, int tableNo, String name) {
+        int newReservationNo = tableModel.changeReservationTable(oldReservation, reservationDate, tableNo, name);
+        bookingView.printReservationTableResult(newReservationNo);
+        return newReservationNo;
+    }
 }

@@ -13,4 +13,14 @@ public interface Model {
 
     // Метод для бронирования стола
     int reservationTable(Date reservationDate, int tableNo, String name);
+
+    /**
+     * Изменение бронирования столика.
+     * @param oldReservation старый номер резервирования
+     * @param reservationDate дата резервирования
+     * @param tableNo номер столика
+     * @param name имя клиента
+     * @return новый номер резервирования или -1 в случае ошибки
+     */
+    int changeReservationTable(int oldReservation, Date reservationDate, int tableNo, String name);
 }

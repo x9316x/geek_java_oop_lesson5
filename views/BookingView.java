@@ -43,12 +43,14 @@ public class BookingView implements View {
 
     /**
      * Действие клиента (пользователь нажал на кнопку отмены бронирования)
-     * @param oldReservation идентификатор бронирования (старый)
+     *
+     * @param oldReservation  идентификатор бронирования (старый)
      * @param reservationDate дата бронирования
-     * @param tableNo номер столика
-     * @param name Имя
+     * @param tableNo         номер столика
+     * @param name            Имя
+     * @return
      */
-    public void changeReservationTable(int oldReservation, Date reservationDate, int tableNo, String name){
-        //TODO: Реализовать самостоятельно в рамках домашней работы
+    public int changeReservationTable(int oldReservation, Date reservationDate, int tableNo, String name) {
+        return observer.onChangeReservationTable(oldReservation, reservationDate, tableNo, name);
     }
 }
